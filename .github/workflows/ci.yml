@@ -38,6 +38,6 @@ jobs:
       
       - name: Check out fmt
         run: test -z $(go fmt ./...)
-      - name: staticcheck result
+      - name: staticcheck
         run:  staticcheck ./...
   
