@@ -30,5 +30,9 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-	w.Write(dat)
+	if n, err := w.Write(dat); err != nil {
+		log.Printf("Error writing data body,write %d bytes: %v", n, err)
+		w.WriteHeader(500)
+		return
+	}
 }
